@@ -1,0 +1,31 @@
+[
+    {
+        "type": "message",
+        "targetId":1,
+        "message": "Hi, Message from user 1"
+    },
+    {
+        "type": "message",
+        "targetId":18,
+        "message": "Hi, Message from user admin"
+    },
+    {
+        "type": "joinGroup",
+        "groupId":1,
+        "message": "Hi, Message from user 1"
+    },
+    {
+        "type": "groupMessage",
+        "groupId":1,
+        "message": "Hi, Message from Admin"
+    },
+    {
+        "type": "broadcast",
+        "age": 30,
+        "message": "Hi, Message from user 1"
+    },
+    {
+        "type": "leaveGroup",
+        "groupId":1
+    }
+]

@@ -1,0 +1,155 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "PingTamizha - User",
+        "description": "API documentation for user and admin endpoints",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "",
+            "description": "Development server"
+        }
+    ],
+    "paths": {
+        "/api/auth/signup": {
+            "post": {
+                "description": "Allows users to register to the system",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Just Tamizha"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "India"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@pingtamizha.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "tamizha"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "500": {
+                        "description": "Error hashing password"
+                    },
+                    "501": {
+                        "description": "Signup failed"
+                    }
+                }
+            }
+        },
+        "/api/auth/verifyemail": {
+            "post": {
+                "description": "Verify the email of the user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@pingtamizha.com"
+                                    },
+                                    "otp": {
+                                        "type": "integer",
+                                        "example": 123456
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid OTP"
+                    },
+                    "500": {
+                        "description": "Errror verifying user"
+                    },
+                    "200": {
+                        "description": "Email verified successfully"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "description": "Allows users to login to the system",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@pingtamizha.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "tamizha"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Invalid credentials"
+                    }
+                }
+            }
+        },
+        "/api/messages/send": {
+            "post": {
+                "description": "Allows users to send message to the system",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "example": "Just Tamizha"
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTc0NjY0MzgzNCwiZXhwIjoxNzQ2NjQ3NDM0fQ.JaCo2ZvYO4qEJqQFjFngvwlR7uCvPYU2YF9e6tkSlHc"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "403": {
+                        "description": "No token provided"
+                    },
+                    "401": {
+                        "description": "Invalid token"
+                    }
+                }
+            }
+        }
+    }
+}   
