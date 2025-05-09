@@ -9,7 +9,7 @@ exports.signup = (req, res) => {
         if (err) return res.status(500).json({ error: "Error hashing password" });
 
         const otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit OTP
-        const query = "INSERT INTO users (name, email, country, password, role, otp,verified) VALUES (?, ?, ?, ?, 'user', ?, false)";
+        const query = "INSERT INTO users (name, email, country, password, role, otp,verified) VALUES (?, ?, ?, ?, 'user', ?, '0')";
         connection.query(query, [name, email, country, hashedPassword, otp], (error, results) => {
             if (error) return res.status(501).json({ error: "Signup failed" });
 
