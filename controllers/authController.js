@@ -60,7 +60,7 @@ exports.verifyOtp = (req, res) => {
 
 exports.login = (req, res) => {
     const { email, password } = req.body;
-    connection.query("SELECT * FROM users WHERE email = ?", [email], (error, results) => {
+    connection.query("SELECT * FROM users WHERE email = ? and verified=1", [email], (error, results) => {
         if (error || results.length === 0) return res.status(400).json({ error: "Invalid credentials" });
 
         bcrypt.compare(password, results[0].password, (err, match) => {
